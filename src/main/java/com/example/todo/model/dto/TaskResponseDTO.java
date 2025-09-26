@@ -1,15 +1,26 @@
 package com.example.todo.model.dto;
 
 import com.example.todo.model.enums.TaskStatus;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
 
+@Schema(description = "DTO de resposta contendo dados completos da tarefa")
 public class TaskResponseDTO {
 
+    @Schema(description = "ID único da tarefa", example = "1")
     private Long id;
+
+    @Schema(description = "Título da tarefa", example = "Implementar API REST")
     private String title;
+
+    @Schema(description = "Descrição detalhada da tarefa", example = "Implementar todas as operações CRUD da API de tarefas")
     private String description;
+
+    @Schema(description = "Status atual da tarefa")
     private TaskStatus taskStatus;
+
+    @Schema(description = "Data e hora de criação da tarefa", example = "2025-09-26T10:30:00")
     private LocalDateTime createdAt;
 
     public TaskResponseDTO() {

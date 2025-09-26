@@ -46,6 +46,16 @@ public class TaskService {
         return toDTO(taskRepository.save(task));
     }
 
+    public TaskResponseDTO update(Long id, TaskRequestDTO taskRequestDTO) {
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tarefa Não Encontrada Para o Id: " + id));
+
+        task.setTitle(taskRequestDTO.getTitle());
+        task.setDescription(taskRequestDTO.getDescription());
+
+        return toDTO(taskRepository.save(task));
+    }
+
     public TaskResponseDTO updateStatus(Long id, TaskStatus taskStatus) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Tarefa Não Encontrada Para o Id: " + id));
